@@ -1,0 +1,169 @@
+body{
+   font-family: "Plus Jakarta Sans", sans-serif   !important;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+} 
+
+.container {
+   flex: 1;
+}
+
+/* Navbar Styling */
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+   
+}
+
+.nav-link {
+   color: #222  !important;       /*to override custom bootstrap styling */
+}
+
+/* Footer Styling */
+.f-info-links a {
+    text-decoration: none;
+    color: #222;
+
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+    width: 100%;
+    vertical-align: middle;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}
+
+.f-info-socials i {
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.f-info {
+   text-align: center;
+    height: 8rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Index page styling */
+.card {
+    border:none;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem  !important;
+    width: 100%          !important;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 0  !important;
+}
+
+.card-text p {
+   font-weight: 400  !important;
+}
+
+.listing-link {
+    text-decoration: none;
+}
+
+/* Overlay/Card effect */
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: white;
+    font-size: 300;
+}
+
+.add-btn {
+    background-color: #fe424d;
+    border: none;
+}
+
+/* Edit Page */
+.edit-btn {
+    background-color: #fe424d;
+    border: none;
+}
+
+/* Show Page */
+.show-img {
+    height: 30vh;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.edit-btn,
+.delete-btn {
+    width: 100px !important; /* Equal width for both */
+    height: 38px;
+    border-radius: 8px !important;
+    background-color: #fe424d !important;
+    border: none !important;
+    
+    /* These 3 lines center the text perfectly inside the button */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 0; /* Resetting the uneven padding */
+    margin: 0;
+}
+
+.edit-btn:hover, 
+.delete-btn:hover {
+    background-color: #e33b45 !important;
+}
+
+.edit-btn,
+.btn button {
+    width: 100px !important; /* Fixed width looks better on all screens */
+    height: 38px;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-dark {
+    background-color: #fe424d  !important;
+    border: none  !important;
+}
+
+/* Responsive adjustment for very small screens */
+@media (max-width: 576px) {
+    .btns {
+        flex-direction: column; /* Stack buttons on top of each other on mobile */
+        width: 100%;
+    }
+    .edit-btn, .btns button {
+        width: 100% !important; /* Full width on mobile for easy tapping */
+    }
+}
