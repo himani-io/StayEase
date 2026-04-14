@@ -62,7 +62,7 @@ body{
 }
 
 /* Index page styling */
-.card {
+.listing-card {
     border:none;
     margin-bottom: 2rem;
 }
@@ -155,6 +155,10 @@ body{
 .btn-dark {
     background-color: #fe424d  !important;
     border: none  !important;
+}
+
+.border {
+    border: 1px solid black !important;
 }
 
 /* Responsive adjustment for very small screens */
