@@ -13,17 +13,9 @@ async function main() {
 
 const initDB = async () => {
     await Listing.deleteMany({});
-
-    // This part ensures EVERY listing has the correct object structure
-    // even if your data.js file has the old format
-    // const processedData = initData.data.map((obj) => ({
-    //     ...obj,
-    //     image: {
-    //         url: obj.image, // Converts the string URL to the object format
-    //         filename: "listingimage"
-    //     }
-    // }));
-    
+    initData.data = initData.data.map((obj) => ({
+        ...obj, 
+        owner:"69e7523a70c2711e95bdb49e"}));
     await Listing.insertMany(initData.data);
     console.log('data was initialized');
 };

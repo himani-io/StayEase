@@ -1,0 +1,29 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <h1 class="col-6 offset-3">SignUp on StayEase</h1>
+   <div class="col-6 offset-3">
+      <form action="/signup" method="POST" class="needs-validation novalidate">
+           <div>
+              <label for="username" class="form-label">Username :</label>
+              <input id="username" name="username" type="text" placeholder="add a catchy Username" class="form-control" required>
+              <div class="valid-feedback">Looks good!</div>
+              <br/><br/>
+            </div>
+
+            <div>
+              <label for="email" class="form-label">Email :</label>
+              <input id="email" name="email" type="email" placeholder="Add your Email" class="form-control" required>
+              <br/><br/>
+            </div>
+
+            <div>
+              <label for="password" class="form-label">Password :</label>
+              <input id="password" name="password" type="password" placeholder="Generate a password" class="form-control" required>
+              <br/><br/>
+            </div>
+
+            <button class="btn btn-success">SignUp</button>
+      </form>
+    </div>
+</div>

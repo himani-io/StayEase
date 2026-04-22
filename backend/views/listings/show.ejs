@@ -7,12 +7,11 @@
     <div class="card col-6 offset-3 show-card listing-card">
         <img src="<%= listing.image?.url %>" class="card-img-top show-img" alt="listing_image">
         <div class="card-body">
-            <p class="card-text">
-                <li>Description : <%= listing.description %></li>
-                <li>Location : <%= listing.location %></li>
-                <li>Country : <%= listing.country %></li>
-                <li>Price : &#x20B9; <%=listing.price ? listing.price.toLocaleString() : "Price not available" %></li>  
-            </p>
+            <p class="card-text"><i>Owner: <b><%= listing.owner.username %></i></b></p>
+            <p class="card-text"><b>Description :</b> <%= listing.description %></p>
+            <p class="card-text"><b>Location : </b><%= listing.location %></p>
+            <p class="card-text"><b>Country :</b> <%= listing.country %></p>
+            <p class="card-text"><b>Price :</b> &#x20B9; <%=listing.price ? listing.price.toLocaleString() : "Price not available" %></p>  
         </div>  
     </div>
 </div>
@@ -26,6 +25,8 @@
         </form>
     </div>
 </div>
+
+
 <div class="col-8 offset-3 mb-3">
     <hr/>
     <h4>Leave a review</h4>
