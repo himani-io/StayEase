@@ -1,3 +1,10 @@
+const Listing =  require("./models/listing.js");
+const ExpressError = require("./utils/ExpressError.js");
+const {listingSchema, reviewSchema} = require("./schema.js");
+
+
+// ===================== AUTHENTICATION =====================
+// Ensures the user is logged in before accessing protected routes
 module.exports.isLoggedIn = (req, res, next) => {
      if(!req.isAuthenticated()){
         req.session.redirectUrl = req.originalUrl;
@@ -5,11 +12,70 @@ module.exports.isLoggedIn = (req, res, next) => {
         return res.redirect("/login");
     }
     next();
-}
+};
 
+
+// ===================== REDIRECT HANDLER =====================
+// Stores and clears redirect URL after successful login
 module.exports.saveRedirectUrl = (req, res, next) =>{
    if(req.session.redirectUrl) {
       res.locals.redirectUrl = req.session.redirectUrl;
-   }
+      delete req.session.redirectUrl; // 🔥 prevent reuse
+    }
    next();
-}
+};
+
+
+
+// ===================== AUTHORIZATION =====================
+// Ensures only the listing owner can modify or delete the listing
+module.exports.isOwner = async(req, res, next) => {
+   let {id} = req.params;
+
+   let listing = await Listing.findById(id);
+    
+   // Handle case where listing does not exist
+    if (!listing) {
+        req.flash("error", "Listing not found.");
+        return res.redirect("/listings");
+    }
+
+    // Check ownership
+    if(!res.locals.currUser || !listing.owner.equals(res.locals.currUser._id)){
+        req.flash("error", "You are not authorized to edit this listing. ");
+        return res.redirect(`/listings/${id}`)
+    }
+
+    next();
+};
+
+
+// ===================== VALIDATION: LISTING =====================
+// Validates listing data using Joi schema before saving/updating
+module.exports.validateListing = (req, res, next) => {
+    let {error} = listingSchema.validate(req.body);
+
+    console.log(error);
+
+    if(error) {
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    }else{
+        next();
+    };
+};
+
+
+// ===================== VALIDATION: REVIEW =====================
+// Validates review data using Joi schema before saving
+module.exports.validateReview = (req, res, next) => {
+    let {error} = reviewSchema.validate(req.body);
+   
+    if(error) {
+        console.log(error);
+        let errMsg = error.details.map((el) => el.message).join(",");
+        throw new ExpressError(400, errMsg);
+    }else{
+        next();
+    }
+};
