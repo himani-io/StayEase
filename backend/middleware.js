@@ -1,13 +1,18 @@
 const Listing =  require("./models/listing.js");
 const ExpressError = require("./utils/ExpressError.js");
 const {listingSchema, reviewSchema} = require("./schema.js");
+const Review = require("./models/reviews.js");
 
 
 // ===================== AUTHENTICATION =====================
 // Ensures the user is logged in before accessing protected routes
 module.exports.isLoggedIn = (req, res, next) => {
      if(!req.isAuthenticated()){
-        req.session.redirectUrl = req.originalUrl;
+     
+        if (req.method === "GET") {
+            req.session.redirectUrl = req.originalUrl;
+        }
+
         req.flash("error", "you must be logged in to create listing");
         return res.redirect("/login");
     }
@@ -24,7 +29,6 @@ module.exports.saveRedirectUrl = (req, res, next) =>{
     }
    next();
 };
-
 
 
 // ===================== AUTHORIZATION =====================
@@ -74,8 +78,35 @@ module.exports.validateReview = (req, res, next) => {
     if(error) {
         console.log(error);
         let errMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errMsg);
+
+        req.flash("error", errMsg);
+
+        // throw new ExpressError(400, errMsg);
+
+        return res.redirect(`/listings/${req.params.id}`);
     }else{
         next();
     }
 };
+
+
+// ===================== REVIEW =====================
+//Ensure only the author has permission to delte the review
+module.exports.isReviewAuthor = async (req, res, next) => {
+    let {id, reviewId} = req.params;
+
+    let review = await Review.findById(reviewId);
+    console.log(Review);
+
+    if (!review) {
+       req.flash("error", "Review not found");
+       return res.redirect(`/listings/${id}`);
+    }
+
+    if(!review.author.equals(res.locals.currUser._id)) {
+        req.flash("error", "You are not authorized to delete this review. ");
+        return res.redirect(`/listings/${id}`);
+    }
+
+    next();
+}
