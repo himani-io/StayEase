@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production") {
+    require("dotenv").config();
+} 
+
 const express =require("express");
 const app = express();
 
@@ -29,8 +33,10 @@ app.engine("ejs", ejsMate);
 // ===================== MIDDLEWARE =====================
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({extended : true}));
+app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 app.use(methodOverride("_method"));
+
 
 
 // ===================== DATABASE CONNECTION =====================
