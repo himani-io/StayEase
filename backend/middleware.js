@@ -9,9 +9,12 @@ const Review = require("./models/reviews.js");
 module.exports.isLoggedIn = (req, res, next) => {
      if(!req.isAuthenticated()){
      
-        if (req.method === "GET") {
-            req.session.redirectUrl = req.originalUrl;
-        }
+        // if (req.method === "GET") {
+        //     req.session.redirectUrl = req.originalUrl;
+        // }
+        req.session.redirectUrl = req.originalUrl;
+        console.log("isLoggedIn hit:", req.originalUrl);
+        console.log("Saved URL:", req.originalUrl);
 
         req.flash("error", "you must be logged in to create listing");
         return res.redirect("/login");
@@ -25,7 +28,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 module.exports.saveRedirectUrl = (req, res, next) =>{
    if(req.session.redirectUrl) {
       res.locals.redirectUrl = req.session.redirectUrl;
-      delete req.session.redirectUrl; // 🔥 prevent reuse
+      delete req.session.redirectUrl; 
     }
    next();
 };
@@ -63,10 +66,21 @@ module.exports.validateListing = (req, res, next) => {
 
     if(error) {
         let errMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errMsg);
-    }else{
-        next();
-    };
+        
+        if (errMsg.includes("price")) {
+
+           req.flash("error", "Enter a valid price");
+
+        } else {
+
+           req.flash("error", "Please fill all required fields correctly");
+
+        }
+
+            return res.redirect("/listings/new");
+        }else{
+            next();
+        };
 };
 
 
