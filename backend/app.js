@@ -95,11 +95,6 @@ app.use((req, res, next) => {
 
 // ===================== ROUTES =====================
 
-//Home Route
-app.get("/", (req, res) => {
-   res.render("listings/index.ejs");
-});
-
 //Main Routes
 app.use("/listings", listingRouter );
 app.use("/listings/:id/reviews", reviewRouter );
