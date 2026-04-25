@@ -13,20 +13,9 @@ const listingSchema = new Schema({
     },
 
     image: {
-    filename: {
-    type: String,
-    default: "listingimage",
-  },
-  url: {
-    type: String,
-    // This default only kicks in if 'url' is missing entirely
-    default: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=800&q=60",
-    // This 'set' logic is great—it catches users sending an empty string "" from a form
-    set: (v) => v === "" 
-      ? "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?auto=format&fit=crop&w=800&q=60" 
-      : v,
+      url: String,
+      filename: String,
     },
-  },
 
   price: {
       type: Number,
@@ -51,8 +40,19 @@ const listingSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User",
-  }
+  },
 
+  geometry: {
+    type: {
+      type: String, // Don't do `{ location: { type: String } }`
+      enum: ['Point'], // 'location.type' must be 'Point'
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      required: true
+    }
+  }
 
 });
 
