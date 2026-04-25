@@ -74,7 +74,7 @@ body{
 }
 
 .card-body {
-    padding: 0  !important;
+    padding: 5px  !important;
 }
 
 .card-text p {
@@ -157,6 +157,16 @@ body{
     border: none  !important;
 }
 
+.delete-review-btn {
+    background-color: black !important;
+    color: white !important;
+    border: none !important;
+}
+
+.delete-review-btn:hover {
+    background-color: #222 !important;
+}
+
 .border {
     border: 1px solid black !important;
 }
@@ -170,4 +180,29 @@ body{
     .edit-btn, .btns button {
         width: 100% !important; /* Full width on mobile for easy tapping */
     }
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    transition: 0.2s;
+}
+
+
+/* Map */
+#map { 
+    height: 400px;
+    width: 100%; 
+    border-radius: 1rem;
+}
+
+.mapboxgl-popup-content {
+  border-radius: 8px !important;
+  padding: 15px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2) !important;
+}
+
+.mapboxgl-popup-close-button {
+  padding: 2px;
+  font-size: 1.2rem;
 }
