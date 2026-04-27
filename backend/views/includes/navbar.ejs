@@ -1,25 +1,154 @@
+<style>
+
+    .btn-search {
+        background-color: #fb4854;
+        color: white;
+        border-radius: 25px;
+    }
+
+    .btn-search:hover{
+        background-color: #fb4854;
+        color: #f5eaeb;
+    }
+
+    .btn-search i {
+        display: inline;
+        margin-right: 0.3rem;
+    }
+
+    .search-bar {
+        height: 2.3rem;
+        box-shadow: 2px 4px 10px rgba(251, 72, 84, 0.25);
+        border-radius: 25px;
+        padding: 0.5rem 3rem 0.5rem 3rem;
+        font-size: 1rem;
+    }
+
+    @media(max-width: 768px) {
+        .navbar .container-fluid {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+
+        .navbar .navbar-nav {
+            flex-wrap: wrap;
+            row-gap: 0.6rem;
+        }
+
+        .navbar .navbar-nav {
+            flex-wrap: wrap;
+            padding-right: 1rem !important;
+        }
+
+        .navbar .position-absolute{
+            position: static !important;
+            transform: none !important;
+            width: auto !important;
+            order: 0;
+            margin-top: 0 !important;
+            flex: 1;
+        }
+
+        .navbar form{
+            width: 100%;
+        }
+
+        .navbar form input{
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .navbar form button{
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .navbar .search-bar{
+            width: 100%;
+            min-width: 110px;
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            height: 2rem;
+        } 
+
+        .navbar .ms-auto{
+            margin-left: auto !important;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .navbar .nav-link{
+            font-size: 0.9rem;
+            padding-left: 0.4rem !important;
+            padding-right: 0.4rem !important;
+        }
+
+        .navbar-brand i{
+            font-size: 1.5rem !important;
+        }
+    }
+</style>
+
+
 <nav class="navbar navbar-expand bg-white border-bottom sticky-top py-2 shadow-sm">
     <div class="container-fluid px-2 px-md-5">
         <div class="navbar-nav d-flex flex-row align-items-center w-100">
 
-            <a class="navbar-brand text-danger d-flex align-items-center me-3" href="/listings">
+            <a 
+               class="navbar-brand text-danger d-flex align-items-center me-3" 
+               href="/listings">
                 <i class="fa-regular fa-compass fs-3"></i>
             </a>
             
-            <a class="nav-link px-2 " href="/listings"><b>Explore</b></a>
+            <a 
+               class="nav-link px-2 " 
+               href="/listings">
+                <b>
+                    Explore
+                </b>
+            </a>
             
-            <div>
-               <form class="d-flex navbar-nav ms-auto" role="search">
-                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                   <button class="btn btn-search" type="submit">Search</button>
+            <div class="position-absolute start-50 translate-middle-x">
+               <form class="d-flex  mx-auto" role="search" action="/listings" method="GET">
+                   <input 
+                       class="form-control search-bar search-inp me-2" 
+                       type="search" 
+                       placeholder="Search destinations"
+                    />
+                   <button class="btn btn-search" type="submit">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                      Search
+                    </button>
                 </form>
             </div>
 
             <div class="ms-auto d-flex align-items-center">
-              <a class="nav-link px-2" href="/listings/new">Host</a>
+                <a 
+                  class="nav-link px-2" 
+                  href="/listings/new"
+                >
+                  Host
+                </a>
+
               <% if(!currUser) { %>
-               <a class="nav-link px-2" href="/signup" style="font-size: 0.85rem;"><b>Sign up</b></a>
-               <a class="nav-link px-2" href="/login" style="font-size: 0.85rem;"><b>Log in</b></a>
+                <a 
+                   class="nav-link px-2" 
+                   href="/signup" 
+                   style="font-size: 0.85rem;">
+                       <b>
+                          Sign up
+                        </b>
+                </a>
+
+               <a 
+                    class="nav-link px-2" 
+                    href="/login" style="font-size: 0.85rem;">
+                    <b>
+                        Log in
+                    </b>
+                </a>
+                
               <% } else { %>
                <a class="nav-link px-2" href="/logout" style="font-size: 0.85rem;"><b>Log out</b></a>
               <% } %>
@@ -28,3 +157,4 @@
         </div>
     </div>
 </nav>
+
