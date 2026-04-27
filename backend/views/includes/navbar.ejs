@@ -4,6 +4,12 @@
         background-color: #fb4854;
         color: white;
         border-radius: 25px;
+        height: 2.3rem;
+        padding: 0 1rem;
+        min-width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .btn-search:hover{
@@ -114,7 +120,9 @@
                    <input 
                        class="form-control search-bar search-inp me-2" 
                        type="search" 
+                       name="search"
                        placeholder="Search destinations"
+                       value="<%= typeof search !== 'undefined' ? search : '' %>"
                     />
                    <button class="btn btn-search" type="submit">
                       <i class="fa-solid fa-magnifying-glass"></i>

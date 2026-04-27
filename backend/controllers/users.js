@@ -45,7 +45,7 @@ module.exports.renderLoginForm = (req, res) => {
 
 module.exports.loginUser = async(req, res) => {
     // On successful login
-    req.flash("success", "Welcome back to StayEase! You are logged in.");
+    req.flash("success", "Welcome back !");
 
     // Redirect to original page or listings
     let redirectUrl = res.locals.redirectUrl || "/listings";

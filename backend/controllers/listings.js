@@ -8,22 +8,54 @@ const geocodingClient = mbxGeocoding({accessToken: MAP_TOKEN});
 // ===================== INDEX =====================
 module.exports.index = async (req, res) => {
 
-    const {category} = req.query;
+    const {category, search} = req.query;
 
     let filter = {};
+    let message = null;
+    let messageType = "success";
 
     if(category && category !== "All"){
-        filter = { category: category };
+        filter.category = category;
     }
 
-    console.log("Category requested:", category);
-    
+    if(search && search.trim() !== ""){
 
+        let cleanSearch = search.trim();
+
+        filter.$or = [
+            {title: {$regex: cleanSearch, $options:"i"}},
+            {location: {$regex: cleanSearch, $options:"i"}},
+            {country: {$regex: cleanSearch, $options:"i"}},
+
+        ]
+
+        const allListings = await Listing.find(filter);
+
+        if (allListings.length > 0) {
+            message = `${allListings.length} stays found for "${cleanSearch}"`;
+            messageType = "success";
+        } else {
+            message = `No stays found for "${cleanSearch}"`;
+            messageType = "warning";
+        }
+
+        return res.render("listings/index.ejs", {
+            allListings,
+            category,
+            search,
+            message,
+            messageType
+        });
+    }
+    
     const allListings = await Listing.find(filter);
 
-    console.log("Number of listings found:", allListings.length);
-
-    res.render("listings/index.ejs", {allListings});
+    res.render("listings/index.ejs", {
+           allListings, 
+           category, 
+           search, 
+           message
+        });
 };
 
 
@@ -36,7 +68,6 @@ module.exports.newForm =  (req, res) => {
 
 // ===================== CREATE LISTING =====================
 module.exports.createListing = async (req, res) => {
-    console.log("Form Data Received:", req.body.listing);
     
     let response = await geocodingClient.forwardGeocode({
         query: req.body.listing.location,
@@ -55,7 +86,7 @@ module.exports.createListing = async (req, res) => {
     let { listing } = req.body;
 
     if (!listing) {
-        req.flash("error", "Invalid listing data");
+        req.flash("error", "Invalid listing data submitted .");
         return res.redirect("/listings");
     }
 
@@ -72,9 +103,9 @@ module.exports.createListing = async (req, res) => {
     newListing.geometry = response.body.features[0].geometry;
     
     let savedListing = await newListing.save();
-    console.log(savedListing);
+    
 
-    req.flash("success", "New Listing Created!");
+    req.flash("success", "Listing created successfully.");
     res.redirect("/listings");
 };
 
@@ -93,11 +124,10 @@ module.exports.showListing = async(req, res) => {
         .populate("owner");
 
     if(!listing){
-           req.flash("error", "Listing you requested for doesn't exist !");
+           req.flash("error", "Requested listing was not found.");
            return res.redirect('/listings');
     }
 
-    console.log(listing);
     res.render("listings/show.ejs" , {listing});
 };
 
@@ -146,7 +176,7 @@ module.exports.updateListing = async (req, res) => {
         await updatedListing.save();
     }
 
-    req.flash("success", "Listing Updated!");
+    req.flash("success", "Listing updated successfully.");
     res.redirect(`/listings/${id}`);
 };
 
@@ -163,7 +193,7 @@ module.exports.destroyListing = async(req, res) => {
       return res.redirect("/listings");
     }
 
-    req.flash("success", " Listing deleted !");
+    req.flash("success", "Listing updated successfully.");
     res.redirect("/listings");
 };
 

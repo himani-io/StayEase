@@ -187,28 +187,7 @@ body{
     transition: 0.2s;
 }
 
-
-/* Map */
-#map { 
-    height: 400px;
-    width: 100%; 
-    border-radius: 1rem;
-}
-
-.mapboxgl-popup-content {
-  border-radius: 8px !important;
-  padding: 15px;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.2) !important;
-}
-
-.mapboxgl-popup-close-button {
-  padding: 2px;
-  font-size: 1.2rem;
-}
-
-/* 
-Edit DropDown */
+/* Edit DropDown */
 
 #category option:checked{
     background-color:#e33b45;
@@ -219,3 +198,4 @@ Edit DropDown */
     border-color:#e33b45;
     box-shadow:0 0 0 0.2rem rgba(227,59,69,0.25);
 }
+
