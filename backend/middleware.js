@@ -16,7 +16,7 @@ module.exports.isLoggedIn = (req, res, next) => {
         console.log("isLoggedIn hit:", req.originalUrl);
         console.log("Saved URL:", req.originalUrl);
 
-        req.flash("error", "you must be logged in to create listing");
+        req.flash("error", "Please log in first.");
         return res.redirect("/login");
     }
     next();
