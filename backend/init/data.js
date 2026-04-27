@@ -300,7 +300,7 @@ const sampleListings = [
     description: "Bright apartment with Atlantic views.",
     image: {
       url: "https://images.unsplash.com/photo-1506976785307-8732e854ad03",
-      filename: "listingname"
+      filename: "listingname",
     },
     price: 8800,
     location: "Lisbon",
@@ -432,7 +432,7 @@ const sampleListings = [
     description: "Stay deep in lush rainforest and connect with nature in this eco-friendly retreat.",
     image: {
         url: "https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-        filename: "listingname"
+        filename: "listingname",
     },
     price: 7200,
     location: "Langkawi",

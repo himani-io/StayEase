@@ -2,45 +2,75 @@
     <h3>Edit your Listing :</h3>
 <div class="row">
   <div class="col-8 offset-2">
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data" >
         <div>
-           <label for="title" class="form-label">Title :</label>
-           <input id="title" name="listing[title]" type="text" value="<%= listing.title %>" class="form-control" required>
+           <label for="title" class="form-label fw-semibold text-dark"><i class="fa-solid fa-heading me-2 text-danger"></i>Title :</label>
+           <input id="title" name="listing[title]" type="text" value="<%= listing.title %>" class="form-control shadow-sm rounded-3" required>
            <div class="valid-feedback">Looks good!</div>
            <br/><br/>
         </div>
         
         <div>
-           <label for="description" class="form-label">Description :</label>
-           <input id="description" name="listing[description]" type="text" value="<%= listing.description %>" class="form-control" required>
+           <label for="description" class="form-label fw-semibold text-dark"><i class="fa-solid fa-file-lines me-2 text-danger"></i>Description :</label>
+           <input id="description" name="listing[description]" type="text" value="<%= listing.description %>" class="form-control shadow-sm rounded-3" required>
            <div class="invalid-feedback">Description should be valid</div>
            <br/><br/>
         </div>
 
+        <div mb-4>
+           <label for="category" class="form-label fw-semibold text-dark"><i class="fa-solid fa-layer-group me-2 text-danger"></i>Category :</label>
+           <select name="listing[category]" id="category" class="form-select shadow-sm border-dark-subtle border-danger text-dark rounded-3 py-2" style="box-shadow: none; " required>
+
+              <option value="Trending" <%= listing.category === "Trending" ? "selected" : "" %>>Trending</option>
+              <option value="Beach" <%= listing.category === "Beach" ? "selected" : "" %>>Beach</option>
+              <option value="Rooms" <%= listing.category === "Rooms" ? "selected" : "" %>>Rooms</option>
+              <option value="Iconic-Cities" <%= listing.category === "Iconic-Cities" ? "selected" : "" %>>Iconic-Cities</option>
+              <option value="Mountains" <%= listing.category === "Mountains" ? "selected" : "" %>>Mountains</option>
+              <option value="Arctic" <%= listing.category === "Arctic" ? "selected" : "" %>>Arctic</option>
+              <option value="Pools" <%= listing.category === "Pools" ? "selected" : "" %>>Pools</option>
+              <option value="Forest" <%= listing.category === "Forest" ? "selected" : "" %>>Forest</option>
+              <option value="Camping" <%= listing.category === "Camping" ? "selected" : "" %>>Camping</option>
+              <option value="Cabins" <%= listing.category === "cabins" ? "selected" : "" %>>Cabins</option>
+              <option value="Castles" <%= listing.category === "Castles" ? "selected" : "" %>>Castles</option>
+              <option value="Lakefront" <%= listing.category === "Lakefront" ? "selected" : "" %>>Lakefront</option>
+              <option value="Farm Stay" <%= listing.category === "Farm Stay" ? "selected" : "" %>>Farm Stay</option>
+              <option value="Pet Friendly" <%= listing.category === "Pet Friendly" ? "selected" : "" %>>Pet Friendly</option>
+              <option value="Luxury" <%= listing.category === "Luxury" ? "selected" : "" %>>Luxury</option>
+
+           </select>
+           <div class="invalid-feedback">Please select a category.</div>
+           <br/><br/>
+        </div>
+
+        <div class="mb-3">
+           <div class="form-label fw-semibold text-dark"><i class="fa-solid fa-camera-retro me-2 text-danger"></i>Original listing image: <br><br></div>
+           <img src="<%= originalImageUrl %>"  class="img-fluid rounded-4 shadow-sm border" style="height: 250px; width: 350px; object-fit: cover;"/>
+        </div>
+
         <div>
-           <label for="image" class="form-label">Image :</label>
-           <input id="image" name="listing[image][url]" type="text" placeholder="enter image url" class="form-control" required>
+           <label for="image" class="form-label fw-semibold text-dark"><i class="fa-solid fa-image me-2 text-danger"></i>Upload New Image :</label>
+           <input id="image" name="listing[image]" type="file"  class="form-control shadow-sm rounded-3">
            <div class="invalid-feedback">Image should be valid</div>
            <br/><br/>
         </div>
         
         <div>
-           <label for="location" class="form-label">Location :</label>
-           <input id="location" name="listing[location]" type="text" value="<%= listing.location %>" class="form-control" required>
+           <label for="location" class="form-label fw-semibold text-dark"> <i class="fa-solid fa-location-dot me-2 text-danger"></i>Location :</label>
+           <input id="location" name="listing[location]" type="text" value="<%= listing.location %>" class="form-control  shadow-sm rounded-3" required>
            <div class="invalid-feedback">Location should be valid</div>
            <br/><br/>
         </div>
         
         <div class="row">
              <div class="col-md-4">
-              <label for="price" class="form-label">Price :</label>
-              <input id="price" name="listing[price]" type="number" value="<%= listing.price %>" class="form-control" required>
+              <label for="price" class="form-label fw-semibold text-dark"> <i class="fa-solid fa-indian-rupee-sign me-2 text-danger"></i>Price :</label>
+              <input id="price" name="listing[price]" type="number" value="<%= listing.price %>" class="form-control shadow-sm rounded-3" required>
               <div class="invalid-feedback">Price should be valid</div>
               <br/><br/>
            </div>
             <div class="col-md-8">
-              <label for="country" class="form-label">Country :</label>
-              <input id="country" name="listing[country]" type="text" value="<%= listing.country %>" class="form-control" required>
+              <label for="country" class="form-label fw-semibold text-dark"><i class="fa-solid fa-earth-asia me-2 text-danger"></i>Country :</label>
+              <input id="country" name="listing[country]" type="text" value="<%= listing.country %>" class="form-control shadow-sm rounded-3" required>
               <div class="invalid-feedback">Country should be valid</div>
               <br/><br/>
             </div>

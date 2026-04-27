@@ -206,3 +206,16 @@ body{
   padding: 2px;
   font-size: 1.2rem;
 }
+
+/* 
+Edit DropDown */
+
+#category option:checked{
+    background-color:#e33b45;
+    color:white;
+}
+
+#category:focus{
+    border-color:#e33b45;
+    box-shadow:0 0 0 0.2rem rgba(227,59,69,0.25);
+}
