@@ -51,6 +51,9 @@
 </div>
 
 <div class="row mt-15">
+  
+    <% if (currUser && listing.owner._id.toString() === currUser._id.toString()) { %>
+
   <div class="btns col-6 offset-4 d-flex">
     <a
       href="/listings/<%= listing._id %>/edit"
@@ -58,8 +61,6 @@
     >
       Edit
     </a>
-
-    <% if (currUser && listing.owner._id.toString() === currUser._id.toString()) { %>
       <form
         method="POST"
         action="/listings/<%= listing._id %>?_method=DELETE"

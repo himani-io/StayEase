@@ -59,7 +59,7 @@ async function main() {
 
 
 // ===================== SERVER =====================
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
@@ -67,6 +67,10 @@ app.listen(port, () => {
 
 
 // ===================== SESSION CONFIGURATION =====================
+
+if (process.env.NODE_ENV === "production") {
+    app.set("trust proxy", 1);
+}
 
 const store = MongoStore.create({ 
     mongoUrl: dbUrl,
@@ -84,10 +88,11 @@ const sessionOptions = {
     store,
     secret:  process.env.SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
         maxAge:  7 * 24 * 60 * 60 * 1000,
+        sameSite: "lax",
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
     },
@@ -120,9 +125,6 @@ app.use((req, res, next) => {
 
 //Main Routes
 app.get("/", (req, res) => {
-   if (!req.user) {
-      req.flash("success", "Welcome to StayEase!");
-    }
    res.redirect("/listings");
 });
 app.use("/listings", listingRouter );
