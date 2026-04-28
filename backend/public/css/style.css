@@ -189,13 +189,223 @@ body{
 
 /* Edit DropDown */
 
-#category option:checked{
+#category option:checked {
     background-color:#e33b45;
     color:white;
 }
 
-#category:focus{
+#category:focus {
     border-color:#e33b45;
     box-shadow:0 0 0 0.2rem rgba(227,59,69,0.25);
 }
 
+
+/* show.ejs */
+.show-card {
+    margin-bottom: 2rem;
+}
+
+.show-img {
+    height: 420px;
+    object-fit: cover;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+}
+
+.btns {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ---------- Mobile Responsive ---------- */
+@media (max-width: 768px){
+
+    .col-8,
+    .col-6,
+    .offset-2,
+    .offset-3,
+    .offset-4 {
+       width: 100% !important;
+       margin-left: 0 !important;
+    }
+
+    h3,h4 {
+       font-size: 1.3rem;
+       text-align: center;
+    }
+
+    .show-card {
+       padding: 0;
+    }
+
+    .show-img {
+       height: 250px;
+       border-radius: 12px 12px 0 0;
+    }
+
+    .card-body {
+       padding: 1rem;
+    }
+
+   .card-text {
+       font-size: 0.95rem;
+       line-height: 1.5;
+    }
+
+    .btns {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 120px;
+    }
+
+    textarea {
+        font-size: 0.95rem;
+    }
+
+    #map {
+        height: 280px;
+        margin-top: 1rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .delete-review-btn {
+        width: 100%;
+    }
+}
+
+/* ---------- Extra Small ---------- */
+@media (max-width: 480px){
+
+    h3 {
+        font-size: 1.15rem;
+    }
+
+    .show-img {
+        height: 220px;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    #map {
+        height: 240px;
+    }
+}
+
+
+@media (max-width: 768px){
+   .search-bar {
+      margin-top: 12px;
+      width: 100%;
+   }
+}
+
+
+/* show.ejs */
+@media (max-width: 768px){
+
+    .col-8,
+    .col-6,
+    .offset-2,
+    .offset-3,
+    .offset-4 {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    h3,h4 {
+        font-size: 1.3rem ;
+        text-align: center;
+    }
+
+    .show-card {
+        margin-top: 1rem;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .show-img {
+        height: 240px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .btns {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 120px;
+    }
+
+    textarea {
+        font-size: 0.95rem;
+    }
+
+    .starability-slot{
+        transform: scale(0.9);
+        transform-origin: left;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .delete-review-btn {
+        width: 100%;
+    }
+
+    #map{
+        width: 100%;
+        height: 280px;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px){
+    
+    h3,h4 {
+        font-size: 1.1rem;
+    }
+
+    .show-img {
+        height: 210px;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        width: 100%;
+    }
+
+    #map {
+        height: 240px;
+    }
+}

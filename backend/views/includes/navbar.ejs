@@ -8,15 +8,7 @@
                 <i class="fa-regular fa-compass fs-3"></i>
             </a>
 
-            <% if (currUser) { %>
-
-                <!-- Explore (ONLY after login) -->
-                <a class="nav-link px-2" href="/listings">
-                    <b>Explore</b>
-                </a>
-
-                <!-- Search (ONLY after login) -->
-                <div class="position-absolute start-50 translate-middle-x">
+             <div class="position-absolute start-50 translate-middle-x">
                     <form class="d-flex mx-auto" role="search" action="/listings" method="GET">
                         <input 
                             class="form-control search-bar search-inp me-2" 
@@ -31,6 +23,14 @@
                         </button>
                     </form>
                 </div>
+
+            <% if (currUser) { %>
+
+                <!-- Explore (ONLY after login) -->
+                <a class="nav-link px-2" href="/listings">
+                    <b>Explore</b>
+                </a>
+               
 
                 <!-- Right side (logged in) -->
                 <div class="ms-auto d-flex align-items-center">

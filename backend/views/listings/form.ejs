@@ -7,22 +7,22 @@
 
     <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
         <div>
-           <label for="title" class="form-label">Title :</label>
-           <input id="title" name="listing[title]" type="text" placeholder="add a catchy title" class="form-control" required>
+           <label for="title" class="form-label fw-semibold text-dark"><i class="fa-solid fa-heading me-2 text-danger"></i>Title :</label>
+           <input id="title" name="listing[title]" type="text" placeholder="add a catchy title" class="form-control shadow-sm rounded-3" required>
            <div class="valid-feedback">Looks good!</div>
            <br/><br/>
         </div>
        
         <div>
-           <label for="description" class="form-label">Description :</label>
-           <textarea id="description" name="listing[description]" type="text" placeholder="enter description" class="form-control" required></textarea>
+           <label for="description" class="form-label fw-semibold text-dark"><i class="fa-solid fa-file-lines me-2 text-danger"></i>Description :</label>
+           <textarea id="description" name="listing[description]" type="text" placeholder="enter description" class="form-control shadow-sm rounded-3" required></textarea>
            <div class="invalid-feedback">Description should be valid</div>
            <br/><br/>
         </div>
 
         <div>
-           <label for="category" class="form-label">Category :</label>
-           <select name="listing[category]" id="category" class="form-select" required>
+           <label for="category" class="form-label fw-semibold text-dark"><i class="fa-solid fa-layer-group me-2 text-danger"></i>Category :</label>
+           <select name="listing[category]" id="category" class="form-select shadow-sm rounded-3" required>
               <option value="" disabled selected>Select Category</option>
               <option value="Trending">Trending</option>
               <option value="Beach">Beach</option>
@@ -45,28 +45,28 @@
         </div>
         
         <div>
-           <label for="image" class="form-label">Upload Image :</label>
-           <input id="image" name="listing[image]" type="file"  class="form-control" accept="image/*" >
+           <label for="image" class="form-label fw-semibold text-dark"><i class="fa-solid fa-camera-retro me-2 text-danger"></i>Upload Image :</label>
+           <input id="image" name="listing[image]" type="file"  class="form-control shadow-sm rounded-3" accept="image/*" >
            <br/><br/>
         </div>
         
         <div>
-           <label for="location" class="form-label">Location :</label>
-           <input id="location" name="listing[location]" type="text" placeholder="eg.. Maldives" class="form-control" required>
+           <label for="location" class="form-label fw-semibold text-dark"><i class="fa-solid fa-location-dot me-2 text-danger"></i>Location :</label>
+           <input id="location" name="listing[location]" type="text" placeholder="eg.. Maldives" class="form-control shadow-sm rounded-3" required>
            <div class="invalid-feedback">Location should be valid</div>
            <br/><br/>
         </div>
         
         <div class="row">
           <div class="col-md-4">
-            <label for="price" class="form-label">Price :</label>
-            <input id="price" name="listing[price]" type="number"  placeholder="1200" class="form-control" required>
+            <label for="price" class="form-label fw-semibold text-dark"><i class="fa-solid fa-indian-rupee-sign me-2 text-danger"></i>Price :</label>
+            <input id="price" name="listing[price]" type="number"  placeholder="1200" class="form-control shadow-sm rounded-3" required>
             <div class="invalid-feedback">Price should be valid!</div>
             <br/><br/>
           </div>
           <div class="col-md-8">
-            <label for="country" class="form-label" class="form-label">Country :</label>
-            <input id="country" name="listing[country]" type="text" placeholder="India" class="form-control" required>
+            <label for="country" class="form-label fw-semibold text-dark" class="form-label"><i class="fa-solid fa-earth-asia me-2 text-danger"></i>Country :</label>
+            <input id="country" name="listing[country]" type="text" placeholder="India" class="form-control shadow-sm rounded-3" required>
             <div class="invalid-feedback">Country should be valid</div>
             <br/><br/>
           </div>
