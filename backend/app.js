@@ -119,6 +119,12 @@ app.use((req, res, next) => {
 // ===================== ROUTES =====================
 
 //Main Routes
+app.get("/", (req, res) => {
+   if (!req.user) {
+      req.flash("success", "Welcome to StayEase!");
+    }
+   res.redirect("/listings");
+});
 app.use("/listings", listingRouter );
 app.use("/listings/:id/reviews", reviewRouter );
 app.use("/", userRouter );
