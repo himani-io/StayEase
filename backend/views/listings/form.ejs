@@ -15,7 +15,7 @@
        
         <div>
            <label for="description" class="form-label">Description :</label>
-           <input id="description" name="listing[description]" type="text" placeholder="enter description" class="form-control" required>
+           <textarea id="description" name="listing[description]" type="text" placeholder="enter description" class="form-control" required></textarea>
            <div class="invalid-feedback">Description should be valid</div>
            <br/><br/>
         </div>
@@ -23,7 +23,7 @@
         <div>
            <label for="category" class="form-label">Category :</label>
            <select name="listing[category]" id="category" class="form-select" required>
-              <option value="All">All</option>
+              <option value="" disabled selected>Select Category</option>
               <option value="Trending">Trending</option>
               <option value="Beach">Beach</option>
               <option value="Rooms">Rooms</option>
@@ -46,7 +46,7 @@
         
         <div>
            <label for="image" class="form-label">Upload Image :</label>
-           <input id="image" name="listing[image]" type="file"  class="form-control" >
+           <input id="image" name="listing[image]" type="file"  class="form-control" accept="image/*" >
            <br/><br/>
         </div>
         

@@ -68,45 +68,54 @@ module.exports.newForm =  (req, res) => {
 
 // ===================== CREATE LISTING =====================
 module.exports.createListing = async (req, res) => {
-    
-    let response = await geocodingClient.forwardGeocode({
-        query: req.body.listing.location,
-        limit: 1,
-    }).send();
 
-    if (!response.body.features.length) {
-        req.flash("error", "Location not found. Please try a more specific address.");
-        return res.redirect("/listings/new");
+    console.log("REQ FILE:", req.file);
+    console.log("REQ BODY:", req.body);
+
+    try {
+        const { listing } = req.body;
+
+        if (!listing) {
+            req.flash("error", "Invalid listing data submitted.");
+            return res.redirect("/listings");
+        }
+
+        // Geocoding
+        let response = await geocodingClient.forwardGeocode({
+            query: listing.location,
+            limit: 1,
+        }).send();
+
+        if (!response.body.features.length) {
+            req.flash("error", "Location not found. Please try a more specific address.");
+            return res.redirect("/listings/new");
+        }
+
+        // Create listing
+        const newListing = new Listing(listing);
+        newListing.owner = req.user._id;
+        newListing.geometry = response.body.features[0].geometry;
+
+        // Image handling (safe)
+        if (req.file) {
+            const { path: url, filename } = req.file;
+
+            newListing.image = {
+                url,
+                filename
+            };
+        }
+
+        await newListing.save();
+
+        req.flash("success", "Listing created successfully.");
+        res.redirect("/listings");
+
+    } catch (err) {
+        console.log(err);
+        req.flash("error", "Something went wrong while creating listing.");
+        res.redirect("/listings");
     }
-
-    let url = req.file.path;
-    let filename = req.file.filename;
-    console.log(url,"..", filename);
-    
-    let { listing } = req.body;
-
-    if (!listing) {
-        req.flash("error", "Invalid listing data submitted .");
-        return res.redirect("/listings");
-    }
-
-    const newListing = new Listing(listing);
-    newListing.owner = req.user._id;
-
-    if (req.file) {
-        newListing.image = {
-            url: req.file.path,  
-            filename: req.file.filename
-        };
-    }
-
-    newListing.geometry = response.body.features[0].geometry;
-    
-    let savedListing = await newListing.save();
-    
-
-    req.flash("success", "Listing created successfully.");
-    res.redirect("/listings");
 };
 
 
