@@ -2,6 +2,9 @@ if(process.env.NODE_ENV != "production") {
     require("dotenv").config();
 } 
 
+const dns = require('node:dns');
+dns.setDefaultResultOrder('ipv4first');
+
 const express =require("express");
 const app = express();
 
@@ -54,7 +57,10 @@ main().then(() => {
 .catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(dbUrl, {
+        serverSelectionTimeoutMS: 5000,
+        socketTimeoutMS: 45000,
+    });
 }
 
 

@@ -1,68 +1,50 @@
 <nav class="navbar navbar-expand bg-white border-bottom sticky-top py-2 shadow-sm">
     <div class="container-fluid px-2 px-md-5">
+        <div class="navbar-nav d-flex flex-row align-items-center w-100 position-relative">
 
-        <div class="navbar-nav d-flex flex-row align-items-center w-100">
-
-            <!-- Brand -->
-            <a class="navbar-brand text-danger d-flex align-items-center me-3" href="/listings">
+            <a class="navbar-brand text-danger d-flex align-items-center me-2" href="/listings">
                 <i class="fa-regular fa-compass fs-3"></i>
             </a>
 
-             <div class="position-absolute start-50 translate-middle-x">
-                    <form class="d-flex mx-auto" role="search" action="/listings" method="GET">
-                        <input 
-                            class="form-control search-bar search-inp me-2" 
-                            type="search" 
-                            name="search"
-                            placeholder="Search destinations"
-                            value="<%= typeof search !== 'undefined' ? search : '' %>"
-                        />
-                        <button class="btn btn-search" type="submit">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            Search
-                        </button>
-                    </form>
-                </div>
+            <div class="search-container">
+                <form class="d-flex" role="search" action="/listings" method="GET">
+                    <input 
+                        class="form-control search-inp" 
+                        type="search" 
+                        name="search"
+                        placeholder="Search destinations"
+                        value="<%= typeof search !== 'undefined' ? search : '' %>"
+                    />
+                    <button class="btn btn-search" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span class="d-none d-md-inline">Search</span> </button>
+                </form>
+            </div>
 
-            <% if (currUser) { %>
-
-                <!-- Explore (ONLY after login) -->
-                <a class="nav-link px-2" href="/listings">
-                    <b>Explore</b>
-                </a>
-               
-
-                <!-- Right side (logged in) -->
-                <div class="ms-auto d-flex align-items-center">
+            <div class="ms-auto d-flex align-items-center auth-links">
+                <% if (currUser) { %>
+                    <a class="nav-link px-2 d-none d-sm-block" href="/listings">
+                        <b>Explore</b>
+                    </a>
 
                     <a class="nav-link px-2" href="/listings/new">
-                        Host
+                        <i class="fa-solid fa-house-chimney d-md-none"></i> <span class="d-none d-md-inline">Become a Host</span> </a>
+
+                    <a class="nav-link px-2" href="/logout">
+                        <i class="fa-solid fa-right-from-bracket d-md-none"></i>
+                        <b class="d-none d-md-inline">Log out</b>
                     </a>
 
-                    <a class="nav-link px-2" href="/logout" style="font-size: 0.85rem;">
-                        <b>Log out</b>
+                <% } else { %>
+                    <a class="nav-link px-2" href="/signup">
+                        <b style="font-size: 0.85rem;">Sign up</b>
                     </a>
 
-                </div>
-
-            <% } else { %>
-
-                <!-- BEFORE LOGIN -->
-                <div class="ms-auto d-flex align-items-center">
-
-                    <a class="nav-link px-2" href="/signup" style="font-size: 0.85rem;">
-                        <b>Sign up</b>
+                    <a class="nav-link px-2" href="/login">
+                        <b style="font-size: 0.85rem;">Log in</b>
                     </a>
-
-                    <a class="nav-link px-2" href="/login" style="font-size: 0.85rem;">
-                        <b>Log in</b>
-                    </a>
-
-                </div>
-
-            <% } %>
-
+                <% } %>
+            </div>
         </div>
-
     </div>
 </nav>
