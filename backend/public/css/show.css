@@ -1,0 +1,111 @@
+/* Show Page */
+.show-img {
+    height: 48-px;
+    object-fit: cover;
+}
+
+.owner-badge {
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.descriptive-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4b4b4b;
+}
+
+.btn {
+    gap: 15px;
+}
+
+.edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 600;
+}
+
+.delete-btn {
+    border-radius: 10px !important;
+    font-weight: 600;
+}
+
+.submit-review-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.review-card {
+    background-color: #fafafa;
+    border-radius: 15px !important;
+    transition: 0.3s ease;
+}
+
+.review-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08) !important;
+    transform: translateY(-2px);
+}
+
+.avatar-circle {
+    width: 35px;
+    height: 35px;
+    background-color: #fe424d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+#map {
+    height: 450px;
+    border-radius: 15px !important;
+}
+
+@media (max-width: 768px) {
+    .show-img {
+        height: 280px; 
+    }
+
+    .listing-title {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+
+    .btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btns form, .btns a {
+        width: 100%;
+    }
+
+    .edit-btn, .delete-btn {
+        width: 100% !important;
+        height: 48px;
+    }
+
+    .review-card {
+        padding: 5px;
+    }
+
+    #map {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .show-img {
+        height: 220px;
+    }
+    
+    .card-body {
+        padding: 1.2rem !important;
+    }
+}

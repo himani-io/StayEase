@@ -1,0 +1,221 @@
+#filters{
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      overflow-x: auto; 
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      position: sticky;    
+      top: 4rem;
+      z-index: 999;
+      background: white; 
+      padding: 1rem 0;
+      border-bottom: 1px solid #e9ecef;
+   }
+
+   #filters::-webkit-scrollbar{
+      display: none;          /* Chrome/Safari */
+   }
+
+   .filter{
+      flex: 0 0 auto;
+      text-align: center;
+      margin-right: 1rem;
+      margin-top: 1rem;
+      opacity:0.7;
+      padding: 0.5rem 0.8rem;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+   }
+
+   .filter:hover{
+      opacity: 1;
+      cursor: pointer;
+      background-color: #f8f9fa;
+      transform: translateY(-2px);
+   }
+
+   .filter p {
+      font-size: 0.8rem;
+      margin: 0.2rem 0 0 0;
+   }
+
+   .filter-a {
+      text-decoration: none;
+      color: inherit;
+   }
+
+   .tax-toggle{
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: 1rem;
+      padding: 0.6rem 1rem;
+      border: 1px solid #161717;
+      height: 3rem;
+      border-radius: 14px;
+      background-color: #f8f9fa;
+      white-space: nowrap;
+   }
+
+   .tax-toggle .form-check-label{
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      cursor: pointer;
+   }
+
+   .tax-toggle .form-check-input{
+      cursor: pointer;
+      transform: scale(1.1);
+   }
+
+   .tax-info {
+      display: none;
+      color: #198754;
+      font-weight: 500;
+      font-size: 0.9rem;
+   }
+
+  
+@media (max-width: 768px) {
+  
+  .navbar-nav {
+    flex-wrap: wrap !important;      
+  }
+
+  .navbar .search-bar {
+    width: 100% !important; 
+    order: 3;               
+    margin: 12px 0 8px 0 !important;
+    padding: 0 10px;
+    position: relative;     
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar .search-bar input {
+    height: 48px;           
+    border-radius: 25px;    
+    padding-left: 20px;
+    padding-right: 50px;    
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .navbar .search-bar button {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;     
+    position: absolute;
+    right: 15px;            
+    top: 5px;
+    padding: 0;
+    background-color: #fe424d; 
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #filters {
+    padding: 12px 5px;
+    margin-top: 5px;
+    gap: 15px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    display: flex;
+    overflow-x: auto;       
+    border-bottom: 1px solid #eee;
+  }
+
+  #filters::-webkit-scrollbar {
+    display: none;         
+  }
+
+  .filter {
+    opacity: 0.7;
+    min-width: 75px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .filter:active {
+    opacity: 1;
+    border-bottom: 2px solid #222;
+  }
+
+  .filter p {
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .tax-toggle {
+    margin: 12px auto;     
+    width: fit-content;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: #fafafa;
+    
+  }
+
+  .listing-card {
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+  }
+
+  .listing-card img {
+    height: 200px !important;
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-brand i {
+    font-size: 1.6rem !important;
+  }
+
+  .listing-card img {
+    height: 200px !important;
+  }
+
+  .auth-links b {
+    font-size: 0.75rem;
+  }
+}
+
+.search-alert{
+    position: fixed;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    min-width: 320px;
+    max-width: 90%;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    padding: 0.8rem 1rem;
+    background: white;
+    font-weight: 500;
+}
+
+.found{
+    background: white;
+    color: #198754;
+    border: 1px solid #d1e7dd;
+}
+
+.not-found{
+    background: white;
+    color: #856404;
+    border: 1px solid #ffe69c;
+}
