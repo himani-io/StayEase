@@ -1,5 +1,6 @@
 .navbar {
     z-index: 1000;
+    position: relative;
 }
 
 .navbar-brand i {
@@ -9,6 +10,11 @@
 .navbar-toggler {
     border: none;
     box-shadow: none !important;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1100;
 }
 
 /* CENTER SEARCH (DESKTOP ONLY) */
@@ -59,7 +65,7 @@
     color: #fe424d;
 }
 
-/* FIX: prevent hamburger overlap with filters */
+/* FIX DROPDOWN */
 .navbar-collapse.show {
     background: white;
     padding: 0.8rem 1rem;
@@ -75,15 +81,19 @@
         transform: none;
         width: 100%;
         margin: 0.8rem 0;
+        display: flex;
+        justify-content: center;
     }
 
     .search-container form {
         width: 100%;
+        display: flex;
         justify-content: center;
     }
 
     .search-inp {
-        width: 92%;
+        width: 80%;
+        max-width: 300px;
         min-width: auto;
         margin: 0 auto;
         display: block;
@@ -112,7 +122,8 @@
     .search-inp {
         height: 2.3rem;
         font-size: 0.88rem;
-        width: 88%;   /* improved: slightly smaller, cleaner look */
+        width: 75%;   /* FIXED: smaller width */
+        max-width: 260px;
     }
 
     .btn-search {
