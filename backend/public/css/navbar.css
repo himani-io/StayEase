@@ -1,0 +1,120 @@
+.navbar {
+    z-index: 1000;
+}
+
+.navbar-brand i {
+    color: #fe424d;
+}
+
+.navbar-toggler {
+    border: none;
+    box-shadow: none !important;
+}
+
+/* CENTER SEARCH (DESKTOP ONLY) */
+.search-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search-inp {
+    height: 2.5rem;
+    min-width: 340px;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    font-size: 0.95rem;
+}
+
+.search-inp:focus {
+    border-color: #fe424d;
+    box-shadow: 0 0 0 0.15rem rgba(254, 66, 77, 0.15);
+}
+
+.btn-search {
+    background: #fe424d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    height: 2.5rem;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-search:hover {
+    background: #e53945;
+    color: white;
+}
+
+.auth-links .nav-link {
+    color: #222;
+    transition: 0.2s ease;
+}
+
+.auth-links .nav-link:hover {
+    color: #fe424d;
+}
+
+/* TABLET + MOBILE */
+@media (max-width: 991px) {
+
+    .search-container {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .search-container form {
+        width: 100%;
+    }
+
+    .search-inp {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .navbar-collapse {
+        background: white;
+        padding: 0.5rem 0;
+    }
+
+    .auth-links {
+        width: 100%;
+        align-items: flex-start !important;
+        gap: 0.4rem;
+    }
+
+    .auth-links .nav-link {
+        width: 100%;
+        padding: 0.6rem 0 !important;
+        border-bottom: 1px solid #f3f3f3;
+    }
+
+    /* IMPORTANT FIX: keep search OUTSIDE hamburger */
+    .navbar-collapse {
+        display: none !important;
+    }
+
+    .navbar-collapse.show {
+        display: block !important;
+    }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 576px) {
+
+    .search-inp {
+        height: 2.3rem;
+        font-size: 0.88rem;
+    }
+
+    .btn-search {
+        height: 2.3rem;
+        font-size: 0.85rem;
+    }
+}
