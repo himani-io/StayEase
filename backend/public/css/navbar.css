@@ -130,9 +130,9 @@
         max-width: 280px;
     }
 
-    .btn-search {
-        height: 2.3rem;
-        font-size: 0.85rem;
-        padding: 0 0.9rem;
-    }
+   .btn-search {
+    width: 42px;
+    padding: 0;
+    justify-content: center;
+}
 }
